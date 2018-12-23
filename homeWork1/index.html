@@ -18,10 +18,10 @@
             new MenuItem('/', 'Home'),
             new MenuItem('/about', 'About'),
             new MenuItem('/policy', 'Policy'),
-            // new SubMenu(..., [
-            //     new MenuItem('/about', 'About'),
-            //     new MenuItem('/policy', 'Policy'),
-            // ])
+            new SubMenu('sub', "my", [
+                new MenuItem('/about', 'About'),
+                new MenuItem('/policy', 'Policy'),
+            ]),
             new MenuItem('/blog', 'Blog')
         ]);
 
