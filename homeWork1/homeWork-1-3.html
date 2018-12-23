@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>homeWork-1-3</title>
+  <link rel="stylesheet" href="homeWork-1-3.css">
+</head>
+<body>
+<div id="content">
+  <form action="#">
+    <h1>Выбор гамбургера</h1>
+
+    <label for="size">Размер:</label><br>
+      <select id="size">
+        <option value="#">-----</option>
+        <option value="small">Маленький (50 рублей, 20 калорий)</option>
+        <option value="big">Большой (100 рублей, 40 калорий)</option>
+      </select><br>
+
+    <label for="filling">Выбор начинки:</label><br>
+      <select id="filling">
+        <option value="#">-----</option>
+        <option value="sheese">c сыром (+ 10 рублей, + 20 калорий)</option>
+        <option value="salad">c салатом (+ 20 рублей, + 5 калорий)</option>
+        <option value="potato">c картофелем (+ 15 рублей, + 10 калорий)</option>
+      </select>
+
+    <p>Выбор топпинга:</p>
+      <input type="checkbox" id="flavoring">приправа (+ 15 рублей, 0 калорий)<br>
+      <input type="checkbox" id="mayo">майонез (+ 20 рублей, + 5 калорий)
+
+    <div id="total">
+      <div><p>Стоимость: <span id="cost">0</span></p></div>
+      <div><p>Калорийность: <span id="calories">0</span></p></div>
+    </div>
+    <button id="button" type="submit">Расчитать</button>
+  </form>
+</div>
+<script src="homeWork-1-3.js"></script>
+<script >
+  window.onload = () => {
+    let button = document.getElementById('button');
+    button.addEventListener('click', () => {
+      let size = document.getElementById('size').value;
+      let filling = document.getElementById('filling').value;
+      let flavoring = document.getElementById('flavoring').checked;
+      let mayo = document.getElementById('mayo').checked;
+
+      let hamburger = new Hamburger(size, filling, flavoring, mayo);
+      document.getElementById('cost').innerHTML = String(hamburger.getPrice() + ' рублей.');
+      document.getElementById('calories').innerHTML = String(hamburger.getCalories() + ' калорий.')
+    })
+  }
+</script>
+</body>
+</html>

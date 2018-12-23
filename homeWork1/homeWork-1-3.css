@@ -1,0 +1,17 @@
+
+#content {
+    background-color: #D3E9F9;
+    border: thin #54985B solid;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: justify;
+    width: 25%;
+}
+h1 {
+    text-align: center;
+}
+#button {
+    margin-top: 20px;
+}
