@@ -10,7 +10,7 @@ class Menu {
             if (this.items[i] instanceof MenuItem){
                 result += this.items[i].render();
             }  else if (this.items[i] instanceof SubMenu) {
-                result += this.SubMenu.render();
+                result += this.items[i].render();
             }
         }
         result += '</ul>';
