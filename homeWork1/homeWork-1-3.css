@@ -1,7 +1,13 @@
-
+body {
+    background-image: url(img/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: lightgray;
+}
 #content {
-    background-color: #D3E9F9;
-    border: thin #54985B solid;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: thin #ffffff solid;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     padding: 10px;
     margin: auto;
     margin-bottom: 10px;
@@ -14,4 +20,9 @@ h1 {
 }
 #button {
     margin-top: 20px;
+}
+
+select {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
