@@ -12,7 +12,7 @@
 
     <label for="size">Размер:</label><br>
       <select id="size">
-        <option value="#">-----</option>
+        <option>-----</option>
         <option value="small">Маленький (50 рублей, 20 калорий)</option>
         <option value="big">Большой (100 рублей, 40 калорий)</option>
       </select><br>
@@ -20,7 +20,7 @@
     <label for="filling">Выбор начинки:</label><br>
       <select id="filling">
         <option value="#">-----</option>
-        <option value="sheese">c сыром (+ 10 рублей, + 20 калорий)</option>
+        <option value="cheese">c сыром (+ 10 рублей, + 20 калорий)</option>
         <option value="salad">c салатом (+ 20 рублей, + 5 калорий)</option>
         <option value="potato">c картофелем (+ 15 рублей, + 10 калорий)</option>
       </select>
@@ -41,12 +41,12 @@
   window.onload = () => {
     let button = document.getElementById('button');
     button.addEventListener('click', () => {
-      let size = document.getElementById('size').value;
-      let filling = document.getElementById('filling').value;
-      let flavoring = document.getElementById('flavoring').checked;
-      let mayo = document.getElementById('mayo').checked;
-
-      let hamburger = new Hamburger(size, filling, flavoring, mayo);
+      let hamburger = new Hamburger(
+        document.getElementById('size').value,
+        document.getElementById('filling').value,
+        document.getElementById('flavoring').checked,
+        document.getElementById('mayo').checked,
+      );
       document.getElementById('cost').innerHTML = String(hamburger.getPrice() + ' рублей.');
       document.getElementById('calories').innerHTML = String(hamburger.getCalories() + ' калорий.')
     })
