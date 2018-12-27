@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+</head>
+<body>
+<div id="gallery"></div>
+
+<script >
+  let block = document.getElementById('gallery');
+
+  fetch('gallery.json')
+    .then(result => {
+      console.log(result);
+      return result.json();
+    })
+    .then(data => {
+      for (let key of data) {
+        console.log(key);
+        block.innerHTML = `<a href="${key.srcMax}"><img src="${key.src}" alt="${key.alt}"></a>`;
+      }
+    })
+    .catch(errors => console.log(errors));
+</script>
+</body>
+</html>
