@@ -20,7 +20,7 @@
             new MenuItem('/', 'Home'),
             new MenuItem('/about', 'About'),
             new MenuItem('/policy', 'Policy'),
-            new SubMenu('sub', "my", [
+            new SubMenu('/mens', 'Mens', 'sub', "sub", [
                 new MenuItem('/about', 'About'),
                 new MenuItem('/policy', 'Policy'),
             ]),
@@ -28,8 +28,8 @@
         ]);
 
         block.innerHTML = menu.render();
-        let button = document.getElementById('button');
-        button.addEventListener('click', () => menu.remove());
+        document.getElementById('button').
+        addEventListener('click', () => menu.remove());
     };
 
 </script>
