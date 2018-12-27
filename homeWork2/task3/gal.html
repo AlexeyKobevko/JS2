@@ -16,9 +16,12 @@
       return result.json();
     })
     .then(data => {
-      for (let key of data) {
-        console.log(key);
-        block.innerHTML = `<a href="${key.srcMax}"><img src="${key.src}" alt="${key.alt}"></a>`;
+      for (let i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        block.insertAdjacentHTML("beforeend",
+              `<a href="${data[i].srcMax}">
+               <img src="${data[i].src}" alt="${data[i].alt}">
+               </a>`);
       }
     })
     .catch(errors => console.log(errors));
