@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Gallery</title>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
 </head>
+
 <body>
-<div id="gallery"></div>
+    <div id="gallery"></div>
 
-<script >
-  let block = document.getElementById('gallery');
-
-  fetch('gallery.json')
-    .then(result => {
-      console.log(result);
-      return result.json();
-    })
-    .then(data => {
-      for (let i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        block.insertAdjacentHTML("beforeend",
-              `<a href="${data[i].srcMax}">
-               <img src="${data[i].src}" alt="${data[i].alt}">
-               </a>`);
-      }
-    })
-    .catch(errors => console.log(errors));
-</script>
+    <script>
+        let block = document.getElementById('gallery');
+        fetch('gallery.json')
+            .then(result => {
+                console.log(result);
+                return result.json();
+            })
+            .then(data => {
+                for (let key of data) {
+                    console.log(key);
+                    block.innerHTML += `<a href = "${key.srcMax}" target = "_blank"><img src="${key.src}" alt="${key.alt}"></a>`;
+                }
+            })
+            .catch(errors => console.log(errors));
+        
+        
+        /*
+        document.getElementById('gallery').addEventListener('click', event => {
+            if (event.target.tagName !== 'IMG') {
+                return;
+            } else {
+                event.target.src = 'images/max/1.jpg' // как тут подставить нужный адрес
+            }
+            console.log(event);
+        })
+        */
+    </script>
 </body>
+
 </html>
