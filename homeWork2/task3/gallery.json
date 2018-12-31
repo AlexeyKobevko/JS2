@@ -1,6 +1,26 @@
 [
-  {"src": "images/min/1.jpg", "srcMax": "images/max/1.jpg", "alt": "Photo1"},
-  {"src": "images/min/2.jpg", "srcMax": "images/max/2.jpg", "alt": "Photo2"},
-  {"src": "images/min/3.jpg", "srcMax": "images/max/3.jpg", "alt": "Photo3"},
-  {"src": "images/min/4.jpg", "srcMax": "images/max/4.jpg", "alt": "Photo4"}
+  {
+    "src": "img/img1.png",
+    "alt": "Some space image"
+  },
+  {
+    "src": "img/img2.jpg",
+    "alt": "Some space image"
+  },
+  {
+    "src": "img/img3.jpg",
+    "alt": "Some space image"
+  },
+  {
+    "src": "img/img4.png",
+    "alt": "Some space image"
+  },
+  {
+    "src": "img/img5.jpg",
+    "alt": "Some space image"
+  },
+  {
+    "src": "img/img6.jpg",
+    "alt": "Some space image"
+  }
 ]
