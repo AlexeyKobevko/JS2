@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<div class="form-group">
+    <h2>Feedback</h2>
+<form action="#" method="post" id="myform">
+    <label class="label" for="name">Your name</label><br>
+        <input class="input" type="text" id = "name" ><br>
+    <div class="text-error">
+        <!--<span class="er">* Имя содержит только буквы</span>-->
+    </div>
+    <label class="label" for="tel">Telephone</label><br>
+        <input class="input" type="number" id = "tel" ><br>
+    <div class="text-error">
+        <!--<span class="er">* Введите телефон в формате +7(000)000-0000</span>-->
+    </div>
+    <label class="label" for="email">Email</label><br>
+        <input class="input" type="email" id = "email" ><br>
+    <div class="text-error">
+        <!--<span class="er">* mymail@mail.ru, my.mail@mail.ru или my-mail@mail.ru</span>-->
+    </div>
+    <label class="label" for="text">Some text</label><br>
+        <textarea class="area" id="text" cols="30" rows="10"></textarea><br>
+    <div class="text-error">
+        <!--<span class="er">* Введите сообщение</span>-->
+    </div>
+    <button class="btn" type="submit">Submit</button>
+    <button class="btn" type="reset">Reset</button>
+</form>
+</div>
+<script src="Validator.js"></script>
+<script>
+    window.onload = () => {
+        document.getElementById('myform').addEventListener('submit', e => {
+            e.preventDefault();
+            let validator = new Validator()
+            // let nameUser = document.getElementById('name').value;
+            // if(/^[a-zа-яА-ЯЁё]{4,30}$/.test(nameUser)){
+            //     document.getElementById('name').classList.add('not-error');
+            // } else {
+            //     document.getElementById('name').classList.add('error');
+            // }
+        })
+    }
+</script>
+</body>
+</html>
