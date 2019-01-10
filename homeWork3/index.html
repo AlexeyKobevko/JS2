@@ -39,13 +39,8 @@
     window.onload = () => {
         document.getElementById('myform').addEventListener('submit', e => {
             e.preventDefault();
-            let validator = new Validator()
-            // let nameUser = document.getElementById('name').value;
-            // if(/^[a-zа-яА-ЯЁё]{4,30}$/.test(nameUser)){
-            //     document.getElementById('name').classList.add('not-error');
-            // } else {
-            //     document.getElementById('name').classList.add('error');
-            // }
+            let validator = new Validator();
+            validator.setClass();
         })
     }
 </script>

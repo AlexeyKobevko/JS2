@@ -1,55 +1,34 @@
 class Validator {
-    constructor(idName, idPhone, idEmail, idText, successStyle, failStyle) {
-        this.idName = idName;
-        this.idPhone = idPhone;
-        this.idEmail = idEmail;
-        this.idText = idText;
-        this.successStyle = successStyle;
-        this.failStyle = failStyle;
+    constructor(idName, idPhone, idEmail) {
+        this.idName = this._noda(idName);
+        this.idPhone = this._noda(idPhone);
+        this.idEmail = this._noda(idEmail);
+    }
+
+    // присваиваю каждому ID ноду
+
+    _noda(id) {
+        let elem = document.getElementById(id);
+        return elem;
     }
 
     _regExp = {
         name: '/a-zаяё/i',
         phone: '/\+\d\(\d{3}\)\d{3}-\d{4}/',
-        email: '/[a-z]+[.-]?[a-z]+?@[a-z]+\.ru/',
-        text: '/\w{80}/gm',
-    }
-    
-    isName() {
-        let nameUser = document.getElementById(this.idName).value;
-        if (this._regExp.name.test(nameUser)) {
-            document.getElementById(this.idName).classList.add(this.successStyle);
-        } else {
-            document.getElementById(this.idName).classList.add(this.failStyle);
-        }
+        email: '/[a-z]+[.-]?[a-z]+?@[a-z]+\.ru/'
+    };
+
+    // Выясняю валидно ли поле инпут
+
+    _isValid(noda, regExp) {
+        return regExp.test(noda.value);
     }
 
-    isPhone() {
-        let phoneUser = document.getElementById(this.idPhone).value;
-        if (this._regExp.phone.test(phoneUser)) {
-            document.getElementById(this.idPhone).classList.add(this.successStyle);
-        } else {
-            document.getElementById(this.idPhone).classList.add(this.failStyle);
-        }
+    // добавляю класс в инпут
+
+    setClass() {
+        if (this._isValid(this.idName, this._regExp.name)) {
+            this.idName.classList.add('not-error');
+        } else this.idName.classList.add('error');
     }
-
-    isEmail() {
-        let emailUser = document.getElementById(this.idEmail).value;
-        if (this._regExp.phone.test(emailUser)) {
-            document.getElementById(this.idEmail).classList.add(this.successStyle);
-        } else {
-            document.getElementById(this.idEmail).classList.add(this.failStyle);
-        }
-    }
-
-    isText() {
-        let textUser = document.getElementById(this.idText).value;
-        if (this._regExp.text.test(textUser)) {
-            document.getElementById(this.idText).classList.add(this.successStyle);
-        } else {
-            document.getElementById(this.idText).classList.add(this.failStyle);
-        }
-    }
-
-
 }
