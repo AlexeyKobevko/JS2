@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Tabs</title>
+    <link rel="stylesheet" href="task1.css">
+</head>
+<body>
+<div class="wrapper">
+    <ul class="header">
+        <li><a class="links" href="#tab1">Вкладка 1</a></li>
+        <li><a class="links" href="#tab2">Вкладка 2</a></li>
+        <li><a class="links" href="#tab3">Вкладка 3</a></li>
+    </ul>
+    <div class="content">
+        <div id="tab1" class="content-item">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, placeat!
+            </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti impedit optio perspiciatis
+                praesentium quasi quo reiciendis tenetur, veniam veritatis!</p>
+            <p>Aliquam atque autem debitis dicta doloremque doloribus, eligendi et in nihil non obcaecati quae quod
+                saepe sequi sit temporibus voluptates?</p>
+            <p>Cumque ex incidunt laborum nulla optio reprehenderit suscipit. Cupiditate debitis dolorem ex iure
+                maiores, modi quis reprehenderit tempora velit voluptas!</p>
+        </div>
+        <div id="tab2" class="content-item">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, quibusdam.</p>
+            <p>Consequuntur, culpa deleniti molestias nemo numquam quod reprehenderit rerum voluptatibus!</p>
+        </div>
+        <div id="tab3" class="content-item">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, necessitatibus?</p>
+            <p>A at consequuntur dignissimos error facilis iste minus nobis quasi.</p>
+            <p>Animi culpa cum dignissimos facilis magnam maiores quia, quod saepe?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi debitis facilis, magni nisi placeat
+                ut.</p>
+            <p>Aliquid autem commodi cupiditate iste nostrum quas, qui voluptatibus. Consequuntur expedita fugiat omnis
+                quia reprehenderit?</p>
+        </div>
+    </div>
+</div>
+<script src="jquery.min.js"></script>
+<script>
+
+    $(document).ready(() => {
+        $('.content-item').not(':first').hide();
+        $('.header li:first').addClass('active');
+
+        $('.header li').click(function() {
+
+            $('.header li').removeClass('active');
+            $(this).addClass('active');
+            $('.content-item').hide();
+
+            let selectedTab = $(this).find('a').attr('href');
+            $(selectedTab).fadeIn();
+        })
+
+
+    })
+
+</script>
+</body>
+</html>
