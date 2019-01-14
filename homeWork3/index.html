@@ -7,40 +7,42 @@
 </head>
 <body>
 
-<div class="form-group">
-    <h2>Feedback</h2>
-<form action="#" method="post" id="myform">
-    <label class="label" for="name">Your name</label><br>
-        <input class="input" type="text" id = "name" ><br>
-    <div class="text-error">
-        <!--<span class="er">* Имя содержит только буквы</span>-->
+<form action="" class="some" id="myform">
+    <div>
+        <label>
+            Your name <br>
+            <input type="text" name="name" id="name">
+        </label>
     </div>
-    <label class="label" for="tel">Telephone</label><br>
-        <input class="input" type="number" id = "tel" ><br>
-    <div class="text-error">
-        <!--<span class="er">* Введите телефон в формате +7(000)000-0000</span>-->
+    <div>
+        <label>
+            Your phone <br>
+            <input type="tel" name="phone" id="phone">
+        </label>
     </div>
-    <label class="label" for="email">Email</label><br>
-        <input class="input" type="email" id = "email" ><br>
-    <div class="text-error">
-        <!--<span class="er">* mymail@mail.ru, my.mail@mail.ru или my-mail@mail.ru</span>-->
+    <div>
+        <label>
+            Your email <br>
+            <input type="email" name="email" id="email">
+        </label>
     </div>
-    <label class="label" for="text">Some text</label><br>
-        <textarea class="area" id="text" cols="30" rows="10"></textarea><br>
-    <div class="text-error">
-        <!--<span class="er">* Введите сообщение</span>-->
-    </div>
-    <button class="btn" type="submit">Submit</button>
-    <button class="btn" type="reset">Reset</button>
+    <button id="val-btn">Submit</button>
 </form>
-</div>
 <script src="Validator.js"></script>
+<script src="jquery.min.js"></script>
+<script src="jquery.mask.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $('#phone').mask('+7(000)000-0000');
+    })
+</script>
 <script>
     window.onload = () => {
         document.getElementById('myform').addEventListener('submit', e => {
-            e.preventDefault();
-            let validator = new Validator();
-            validator.setClass();
+            let valid = new Validator('myform');
+            if (!valid.valid){
+                e.preventDefault();
+            }
         })
     }
 </script>
