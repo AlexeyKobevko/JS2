@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<form action="" class="some" id="myform">
+<div class="wrapper">
+    <form action="" class="some" id="myform">
     <div>
         <label>
             Your name <br>
@@ -26,8 +27,16 @@
             <input type="email" name="email" id="email">
         </label>
     </div>
+    <div>
+        <label>
+            Your City <br>
+            <select name="city" id="city">
+            </select>
+        </label>
+    </div>
     <button id="val-btn">Submit</button>
 </form>
+</div>
 <script src="Validator.js"></script>
 <script src="jquery.min.js"></script>
 <script src="jquery.mask.min.js"></script>
