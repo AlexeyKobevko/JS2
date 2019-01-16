@@ -8,12 +8,12 @@
 <body>
 <div class="wrapper">
     <ul class="header">
-        <li><a class="links" href="#tab1">Вкладка 1</a></li>
+        <li><a class="links active" href="#tab1">Вкладка 1</a></li>
         <li><a class="links" href="#tab2">Вкладка 2</a></li>
         <li><a class="links" href="#tab3">Вкладка 3</a></li>
     </ul>
     <div class="content">
-        <div id="tab1" class="content-item">
+        <div id="tab1" class="content-item">1
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, placeat!
             </p>
@@ -24,11 +24,11 @@
             <p>Cumque ex incidunt laborum nulla optio reprehenderit suscipit. Cupiditate debitis dolorem ex iure
                 maiores, modi quis reprehenderit tempora velit voluptas!</p>
         </div>
-        <div id="tab2" class="content-item">
+        <div id="tab2" class="content-item">2
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, quibusdam.</p>
             <p>Consequuntur, culpa deleniti molestias nemo numquam quod reprehenderit rerum voluptatibus!</p>
         </div>
-        <div id="tab3" class="content-item">
+        <div id="tab3" class="content-item">3
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, necessitatibus?</p>
             <p>A at consequuntur dignissimos error facilis iste minus nobis quasi.</p>
             <p>Animi culpa cum dignissimos facilis magnam maiores quia, quod saepe?</p>
@@ -43,21 +43,35 @@
 <script>
 
     $(document).ready(() => {
-        $('.content-item').not(':first').hide();
-        $('.header li:first').addClass('active');
-
-        $('.header li').click(function() {
-
-            $('.header li').removeClass('active');
-            $(this).addClass('active');
-            $('.content-item').hide();
-
-            let selectedTab = $(this).find('a').attr('href');
-            $(selectedTab).fadeIn();
+        $('.content-item:not(:first)').hide();
+        $('.header').on('click', '.links:not(.active)', e => {
+            e.preventDefault();
+            console.log(e.target);
+            $(e.target).closest('.wrapper').find('.links.active').removeClass('active');
+            $(e.target).addClass('active')
+                .closest('.wrapper')
+                .find('.content-item')
+                .hide();
+            $($(e.target).attr('href')).fadeIn(350);
         })
-
-
     })
+
+    //$(document).ready(() => {
+    //    $('.content-item').not(':first').hide();
+    //    $('.header li:first').addClass('active');
+//
+    //    $('.header li').click(function() {
+//
+    //        $('.header li').removeClass('active');
+    //        $(this).addClass('active');
+    //        $('.content-item').hide();
+//
+    //        let selectedTab = $(this).find('a').attr('href');
+    //        $(selectedTab).fadeIn();
+    //    })
+//
+//
+    //})
 
 </script>
 </body>
