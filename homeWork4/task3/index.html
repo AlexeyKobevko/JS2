@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <form action="" class="some" id="myform">
+    <div>
+        <label>
+            Your name <br>
+            <input type="text" name="name" id="name">
+        </label>
+    </div>
+    <div>
+        <label>
+            Your phone <br>
+            <input type="tel" name="phone" id="phone">
+        </label>
+    </div>
+    <div>
+        <label>
+            Your email <br>
+            <input type="email" name="email" id="email">
+        </label>
+    </div>
+    <div class="wrap">
+        <label>
+            Your City <br>
+            <input type="text" name="city" id="city">
+        </label>
+    </div>
+    <button id="val-btn">Submit</button>
+</form>
+</div>
+<script src="Validator.js"></script>
+<script src="jquery.min.js"></script>
+<script src="jquery.mask.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $('#phone').mask('+7(000)000-0000');
+
+        let list = 'russia.json';
+
+        fetch(list)
+            .then(result => result.json())
+            .then(date => {
+                let $select = $('#city');
+                let $cityData = $('<datalist/>', {
+                    id: 'city-list'
+                });
+
+            $('.wrap').append($cityData);
+            for (let key of date) {
+                $cityData.append($(`<option value="${key.city}">${key.city}</option>`))
+            }
+
+            $select.keyup(() => {
+                if ($select.val().length > 2) {
+                    $select.attr('list', $cityData.attr('id'));
+                }
+            })
+
+            })
+    });
+</script>
+
+</body>
+</html>
