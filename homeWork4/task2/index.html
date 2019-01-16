@@ -30,8 +30,7 @@
     <div>
         <label>
             Your City <br>
-            <select name="city" id="city">
-            </select>
+            <select type="text" name="city" id="city"></select>
         </label>
     </div>
     <button id="val-btn">Submit</button>
@@ -47,18 +46,31 @@
 </script>
 <script>
     window.onload = () => {
-        let block = document.getElementById('city');
-        fetch('russia.json')
-            .then(result => {
-                console.log(result);
-                return result.json();
-            })
+
+        let list = 'russia.json';
+
+        fetch(list)
+            .then(result => result.json())
             .then(data => {
-                for (let key of data) {
-                    block.innerHTML += `<option>${key.city}</option>`;
-                }
-            })
-            .catch(errors => console.log(errors));
+               let $select = $('#city');
+               for (let key of data) {
+                   console.log(key);
+                   $select.append($(`<option value="${key.city}">${key.city}</option>`))
+               }
+            });
+
+       // let block = document.getElementById('city');
+       // fetch('russia.json')
+       //     .then(result => {
+       //         console.log(result);
+       //         return result.json();
+       //     })
+       //     .then(data => {
+       //         for (let key of data) {
+       //             block.innerHTML += `<option>${key.city}</option>`;
+       //         }
+       //     })
+       //     .catch(errors => console.log(errors));
 
         document.getElementById('myform').addEventListener('submit', e => {
             let valid = new Validator('myform');
