@@ -64,12 +64,13 @@ class Cart {
     addProduct(element) {
         let productId = +$(element).data('id');
         let find = this.cartItems.find(product => product.id_product === productId);
-        console.log(find);
+        //console.log(find);
         if(find){
             find.quantity++;
             this.countGoods++;
             this.amount += find.price;
             this._updateCart(find);
+            console.log(this.cartItems);
         } else {
             let product = {
                 id_product: productId,
@@ -96,7 +97,6 @@ class Cart {
             this.countGoods--;
             this.amount -= find.price;
             this._renderSum();
-            this._updateCart(find);
         } else {
             $(`.cart-item[data-product=${$productId}]`).remove();
             //$(`div[data-product=${$productId}]`).remove();
@@ -104,7 +104,14 @@ class Cart {
             this.countGoods--;
             this.amount -= find.price;
             this._renderSum();
-            this._updateCart(find);
+            $.each(this.cartItems, (index, value) => {
+                console.log(value);
+                console.log(value.id_product);
+                if (value.id_product = $productId) {
+                    console.log('URAAA')
+                }
+            })
+            //this.cartItems.find(product => product.id_product === $productId).splice(1,2)
         }
 
     }
