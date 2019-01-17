@@ -39,13 +39,19 @@ class Cart {
     _renderItem(product){
         let $container = $('<div/>', {
             class: 'cart-item',
-            'data-product': product.id_product
+            'data-product': product.id_product,
         });
         $container.append($(`<p class="product-name">${product.product_name}</p>`));
         $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
         $container.append($(`<p class="product-price">${product.price} руб.</p>`));
+        $container.append($(`<button class="remove" data-product=${product.id_product}>Удалить</button>`))
+            .click(e => {
+                //console.log(e.target);
+                this._remove(e.target);
+            });
         $container.appendTo($('.cart-items-wrap'));
     }
+
     _renderSum(){
         $('.sum-goods').text(`Всего товаров в корзине: ${this.countGoods}`);
         $('.sum-price').text(`Общая сумма: ${this.amount} руб.`);
@@ -78,7 +84,30 @@ class Cart {
         }
         this._renderSum();
     }
+
     _remove(id){
-        //TODO: удаление товара
+        let $productId = +$(id).data('product');
+        //console.log($productId);
+        let find = this.cartItems.find(product => product.id_product === $productId);
+        //console.log(find);
+
+        if (find.quantity > 1) {
+            find.quantity--;
+            this.countGoods--;
+            this.amount -= find.price;
+            this._renderSum();
+            this._updateCart(find);
+        } else {
+            $(`.cart-item[data-product=${$productId}]`).remove();
+            //$(`div[data-product=${$productId}]`).remove();
+            find.quantity--;
+            this.countGoods--;
+            this.amount -= find.price;
+            this._renderSum();
+            this._updateCart(find);
+            this._renderSum();
+            this._updateCart(find);
+        }
+
     }
 }
