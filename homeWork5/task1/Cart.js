@@ -105,8 +105,6 @@ class Cart {
             this.amount -= find.price;
             this._renderSum();
             this._updateCart(find);
-            this._renderSum();
-            this._updateCart(find);
         }
 
     }
