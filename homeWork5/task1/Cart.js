@@ -70,7 +70,7 @@ class Cart {
             this.countGoods++;
             this.amount += find.price;
             this._updateCart(find);
-            console.log(this.cartItems);
+            //console.log(this.cartItems);
         } else {
             let product = {
                 id_product: productId,
@@ -96,7 +96,9 @@ class Cart {
             find.quantity--;
             this.countGoods--;
             this.amount -= find.price;
+            this._updateCart(find);
             this._renderSum();
+            //console.log(this.cartItems);
         } else {
             $(`.cart-item[data-product=${$productId}]`).remove();
             //$(`div[data-product=${$productId}]`).remove();
@@ -105,14 +107,19 @@ class Cart {
             this.amount -= find.price;
             this._renderSum();
             $.each(this.cartItems, (index, value) => {
-                console.log(value);
-                console.log(value.id_product);
-                if (value.id_product = $productId) {
-                    console.log('URAAA')
+                //console.log(value);
+                //console.log(value.id_product);
+                if (value.id_product === $productId) {
+                    //console.log(value.id_product);
+                    this.cartItems.splice(index, 1);
+                    console.log(this.cartItems);
+                    this._renderSum();
+                    return false;
                 }
-            })
+            });
             //this.cartItems.find(product => product.id_product === $productId).splice(1,2)
         }
+        this._renderSum();
 
     }
 }
