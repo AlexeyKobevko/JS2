@@ -119,7 +119,5 @@ class Cart {
             });
             //this.cartItems.find(product => product.id_product === $productId).splice(1,2)
         }
-        this._renderSum();
-
     }
 }
