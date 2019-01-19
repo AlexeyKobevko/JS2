@@ -44,11 +44,11 @@ class Cart {
         $container.append($(`<p class="product-name">${product.product_name}</p>`));
         $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
         $container.append($(`<p class="product-price">${product.price} руб.</p>`));
-        $container.append($(`<button class="remove" data-product=${product.id_product}>Удалить</button>`))
-            .click(e => {
-                //console.log(e.target);
-                this._remove(e.target);
-            });
+        let $delBtn = $(`<button class="delBtn">Удалить</button>`);
+        $delBtn.click(() => {
+            this._remove(product.id_product);
+        });
+        $container.append($delBtn);
         $container.appendTo($('.cart-items-wrap'));
     }
 
@@ -87,39 +87,16 @@ class Cart {
     }
 
     _remove(id){
-        let $productId = +$(id).data('product');
-        //console.log($productId);
-        let find = this.cartItems.find(product => product.id_product === $productId);
-        //console.log(find);
-
+        let find = this.cartItems.find(product => product.id_product === id);
         if (find.quantity > 1) {
             find.quantity--;
-            this.countGoods--;
-            this.amount -= find.price;
             this._updateCart(find);
-            this._renderSum();
-            //console.log(this.cartItems);
         } else {
-            $(`.cart-item[data-product=${$productId}]`).remove();
-            //$(`div[data-product=${$productId}]`).remove();
-            find.quantity--;
-            this.countGoods--;
-            this.amount -= find.price;
-            this._renderSum();
-            $.each(this.cartItems, (index, value) => {
-                //console.log(value);
-                //console.log(value.id_product);
-                if (value.id_product === $productId) {
-                    //console.log(value.id_product);
-                    this.cartItems.splice(index, 1);
-                    console.log(this.cartItems);
-                    this._renderSum();
-                    return false;
-                }
-            });
-            //this.cartItems.find(product => product.id_product === $productId).splice(1,2)
+            this.cartItems.splice(this.cartItems.indexOf(find), 1);
+            $(`div[data-product="${id}"]`).remove();
         }
+        this.countGoods--;
+        this.amount -= find.price;
         this._renderSum();
-
     }
 }
